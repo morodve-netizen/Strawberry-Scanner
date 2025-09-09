@@ -3,10 +3,10 @@
 -- very little documentation/comments so please try to read the code good
 -- last updated: 9/8/25
 
-local function Delete(Object) -- serversided delete instance :sobsobsob: (read the scanner code if ur confused and come back)
-	local HookedRemote = game.Players.LocalPlayer.PlayerGui:WaitForChild("StrawberryHookedRM", 5)
-	HookedRemote = HookedRemote.Value -- value of object value which is the vulnerable remote event itself
+local HookedRemote = game.Players.LocalPlayer.PlayerGui:WaitForChild("StrawberryHookedRM", 5)
+HookedRemote = HookedRemote.Value -- value of object value which is the vulnerable remote event itself
 
+local function Delete(Object) -- serversided delete instance :sobsobsob: (read the scanner code if ur confused and come back)
 	HookedRemote:FireServer(Object)
 end
 
@@ -51,7 +51,7 @@ Library:Notify{
 local function ParseTarget(targetstring)
 	-- if they provide "OTHERS" it will provide a table of the characters of all other players (same thing with ALL and ME but different return values)
 	-- if they provide a players name, it will return the players character
-	
+
 	if targetstring == "ME" then
 		return Player.Character or Player.CharacterAdded:Wait()
 	elseif targetstring == "ALL" then
@@ -75,7 +75,7 @@ local function ParseTarget(targetstring)
 
 		return characters
 	end
-	
+
 	-- if it got to this point, they are not using a static string and will switch to player names
 	for _, vplayer in ipairs(Players:GetPlayers()) do
 		if vplayer.Name == targetstring then
@@ -122,7 +122,7 @@ Tabs.Players:CreateButton{
 	Title = "Kill",
 	Callback = function()
 		local Characters = ParseTarget(TargetString)
-		
+
 		if typeof(Characters) == "table" then -- this means its a table of characters instead of one
 			for _, v in ipairs(Characters) do
 				if v:FindFirstChild("Head") then
