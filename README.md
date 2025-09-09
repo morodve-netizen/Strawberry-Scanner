@@ -22,7 +22,7 @@ An in-game interface/tool to scan every remote for vulnurabilitys. </br>
 
 Credits to masteroogway for the UI library [fluent renewed](https://github.com/ActualMasterOogway/Fluent-Renewed).
 
-# How to infect your game with a Backdoor
+# How to infect your game with a Vulnerability
 ```lua
 local r = Instance.new("RemoteEvent",game.ReplicatedStorage)
 r.Name = "RobloxBindableChat"
