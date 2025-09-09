@@ -19,6 +19,7 @@
 
 An in-game interface/tool to scan every remote for vulnurabilitys. </br>
 **Tool was made to find remote vulnurabilitys in your game.** This is NOT a vulnurability itself.
+Credits to masteroogway for the UI library fluent renewed.
 
 # How to infect your game with a Backdoor
 ```lua
