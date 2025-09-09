@@ -19,7 +19,6 @@ local Library = loadstring(game:HttpGet("https://github.com/ActualMasterOogway/F
 
 local Window = Library:CreateWindow{
 	Title = "Strawberry Commands FE | v1.2.7",
-	SubTitle = "by Saji & CDrive",
 	TabWidth = 160,
 	Size = UDim2.fromOffset(830, 525),
 	Resize = true,
