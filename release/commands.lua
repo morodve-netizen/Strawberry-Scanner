@@ -82,8 +82,6 @@ local function ParseTarget(targetstring)
 			if vplayer.Character then
 				return vplayer.Character
 			end
-		else
-			return warn("STRAWBERRY COMMANDS: could not find a static variable or player associated to the string requested for parsing")
 		end
 	end
 end
