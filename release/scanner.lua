@@ -394,6 +394,10 @@ local script = G2L["16"];
 			end
 		end
 		
+		if CurrentVulnerableRemote ~= nil and CurrentVulnerableRemote:IsA("RemoteEvent") then
+			return
+		end
+		
 		ScanButton.TextSize = 12 -- sizing it down for the following message
 		ScanButton.Text = "Sorry, no vuln remotes" -- telling the pookie user that no remote is vuln :sadface:
 		
