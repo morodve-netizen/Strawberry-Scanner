@@ -277,7 +277,7 @@ local script = G2L["16"];
 	--[[
 	
 	/// StrawScan ///
-	/// Last updated: 9/7/2025 ///
+	/// Last updated: 9/8/2025 ///
 	
 	Strawberry's advanced remote event scanner component made by saji
 	Everything below will be explained with comments
@@ -374,19 +374,23 @@ local script = G2L["16"];
 			ScanButton.Text = "Scanning... (" .. tostring(i) .. "/" .. tostring(#Remotes) .. ")"
 			
 			if isVulnerable(v) then
-				ScanButton.TextSize = 12 -- sizing it down for the following message
-				ScanButton.Text = "Vuln found, booting up" -- telling the pookie user that a vuln remote is found :happyface:
+				coroutine.wrap(function()
+					ScanButton.TextSize = 12 -- sizing it down for the following message
+					ScanButton.Text = "Vuln found, booting up" -- telling the pookie user that a vuln remote is found :happyface:
+	
+					task.wait(0.1) -- slight delay
+	
+					local VulnRemote = Instance.new("ObjectValue") -- creates a pointer for the vulnerable remote so the commands script can access the remote
+					VulnRemote.Parent = LocalPlayer.PlayerGui
+					VulnRemote.Name = "StrawberryHookedRM"
+					VulnRemote.Value = CurrentVulnerableRemote
+	
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/release/commands.lua"))() -- loads up the commands script
+					task.wait(1) -- waits before removing the scanner UI
+					script.Parent.Parent:Destroy() -- removes the scanner UI
+				end)()
 				
-				task.wait(0.1) -- slight delay
-				
-				local VulnRemote = Instance.new("ObjectValue") -- creates a pointer for the vulnerable remote so the commands script can access the remote
-				VulnRemote.Parent = LocalPlayer.PlayerGui
-				VulnRemote.Name = "StrawberryHookedRM"
-				VulnRemote.Value = CurrentVulnerableRemote
-				
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/release/commands.lua"))() -- loads up the commands script
-				task.wait(1) -- waits before removing the scanner UI
-				script.Parent.Parent:Destroy() -- removes the scanner UI
+				break
 			end
 		end
 		
