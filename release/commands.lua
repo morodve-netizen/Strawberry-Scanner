@@ -53,7 +53,8 @@ local function ParseTarget(targetstring)
 	-- if they provide a players name, it will return the players character
 
 	if targetstring == "ME" then
-		return Player.Character or Player.CharacterAdded:Wait()
+		local characters = { Player.Character or Player.CharacterAdded:Wait() }
+		return characters
 	elseif targetstring == "ALL" then
 		local characters = {}
 
@@ -80,7 +81,8 @@ local function ParseTarget(targetstring)
 	for _, vplayer in ipairs(Players:GetPlayers()) do
 		if vplayer.Name == targetstring then
 			if vplayer.Character then
-				return vplayer.Character
+				local characters = { vplayer.Character }
+				return characters
 			end
 		end
 	end
@@ -121,15 +123,72 @@ Tabs.Players:CreateButton{
 	Callback = function()
 		local Characters = ParseTarget(TargetString)
 
-		if typeof(Characters) == "table" then -- this means its a table of characters instead of one
-			for _, v in ipairs(Characters) do
-				if v:FindFirstChild("Head") then
-					Delete(v:FindFirstChild("Head")) -- removing the head which kills the player
-				end
+		for _, v in ipairs(Characters) do
+			if v:FindFirstChild("Head") then
+				Delete(v:FindFirstChild("Head")) -- removing the head which kills the player
 			end
-		else -- if it got to this point its a single character so we do that
-			if Characters:FindFirstChild("Head") then
-				Delete(Characters:FindFirstChild("Head"))
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Kick",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, v in ipairs(Characters) do
+			Delete(Players:GetPlayerFromCharacter(v)) -- removing the playerinstance which kicks the player
+		end
+	end
+}
+
+local scaleValues = {
+	"BodyProportionScale",
+	"BodyWidthScale",
+	"BodyHeightScale",
+	"BodyDepthScale",
+	"HeadScale",
+	"BodyTypeScale"
+}
+
+Tabs.Players:CreateButton{
+	Title = "Big Hats (R15 Only)",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, v in ipairs(Characters) do
+			-- makes the players hats big by deleting some hat size values
+			
+			local hum = v:FindFirstChildOfClass("Humanoid")
+			if hum.RigType == Enum.HumanoidRigType.R15 then
+				local hats = hum:GetAccessories()
+				local scalableHats = {}
+				
+				for i, hat in pairs(hats) do
+					local handle = hat:FindFirstChild("Handle")
+					if not handle then continue end
+					local scaleType = handle:FindFirstChild("AvatarPartScaleType")
+					if not scaleType then continue end
+					table.insert(scalableHats, hat)
+				end
+				
+				if #scalableHats == 0 then continue end
+				
+				task.spawn(function()
+					for i, value in pairs(scaleValues) do
+						for i, hat in pairs(scalableHats) do
+							local handle = hat:FindFirstChild("Handle")
+							if not handle then continue end
+							local ogSize = handle:WaitForChild("OriginalSize")
+							Delete(ogSize)
+							repeat task.wait() until ogSize.Parent ~= handle
+						end
+						local scaleValue = hum:FindFirstChild(value)
+						if not scaleValue then continue end
+						Delete(scaleValue)
+						repeat task.wait() until scaleValue.Parent ~= hum
+					end
+				end)
 			end
 		end
 	end
