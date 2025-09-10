@@ -158,12 +158,12 @@ Tabs.Players:CreateButton{
 
 		for _, v in ipairs(Characters) do
 			-- makes the players hats big by deleting some hat size values
-			
+
 			local hum = v:FindFirstChildOfClass("Humanoid")
 			if hum.RigType == Enum.HumanoidRigType.R15 then
 				local hats = hum:GetAccessories()
 				local scalableHats = {}
-				
+
 				for i, hat in pairs(hats) do
 					local handle = hat:FindFirstChild("Handle")
 					if not handle then continue end
@@ -171,9 +171,9 @@ Tabs.Players:CreateButton{
 					if not scaleType then continue end
 					table.insert(scalableHats, hat)
 				end
-				
+
 				if #scalableHats == 0 then continue end
-				
+
 				task.spawn(function()
 					for i, value in pairs(scaleValues) do
 						for i, hat in pairs(scalableHats) do
@@ -200,7 +200,7 @@ Tabs.Players:CreateButton{
 		local mouse = Player:GetMouse()
 		local equipped = false
 
-		local tool = Instance.new("Tool",player:FindFirstChild("Backpack"))
+		local tool = Instance.new("Tool",Player:FindFirstChild("Backpack"))
 		tool.Name = "Delete Tool"
 		tool.RequiresHandle = false
 
@@ -221,12 +221,12 @@ Tabs.Players:CreateButton{
 }
 
 Tabs.Players:CreateButton{
-	Title = "Delete Welds",
+	Title = "Delete Welds Tool",
 	Callback = function()
 		local mouse = Player:GetMouse()
 		local equipped = false
 
-		local tool = Instance.new("Tool",player:FindFirstChild("Backpack"))
+		local tool = Instance.new("Tool",Player:FindFirstChild("Backpack"))
 		tool.Name = "Delete Welds Tool"
 		tool.RequiresHandle = false
 
@@ -240,9 +240,9 @@ Tabs.Players:CreateButton{
 		tool.Button1Down:Connect(function()
 			if not equipped then return end
 			if mouse.Target then
-				for _, w in ipairs(mouse.Target:GetChildren())
-					if w:IsA("Weld") then
-						Delete(w)
+				for _, v in ipairs(mouse.Target:GetDescendants()) do
+					if v:IsA("Weld") then
+						Delete(v)
 					end
 				end
 			end
@@ -250,14 +250,14 @@ Tabs.Players:CreateButton{
 	end
 }
 
-local slocked: Boolean = false
-local curplayers = {}
+	local slocked: Boolean = false
+	local curplayers = {}
 
 local slock_toggle = Tabs.Players:CreateToggle("Server Lock", {Title = "Toggle", Default = false })
 
 slock_toggle:OnChanged(function()
 	local decision: Boolean = Tabs["Server Lock"].Value
-	
+
 	if decision then --# Serverlock: ON
 		for _, p in pairs(Players:GetChildren()) do
 			table.insert(curplayers, p.Name)
@@ -266,10 +266,10 @@ slock_toggle:OnChanged(function()
 			for _, ph in pairs(curplayers) do
 				if plr.Name:find(ph) then
 					Library:Notify{
-   						Title = "Unauthorized Player",
-    					Content = plr.Name..", tried joining but the game is ServerLocked",
-    					SubContent = "Serverlock is on!!!",
-   						Duration = 3.5
+						Title = "Unauthorized Player",
+						Content = plr.Name..", tried joining but the game is ServerLocked",
+						SubContent = "Serverlock is on!!!",
+						Duration = 3.5
 					}
 					Delete(plr)
 				end
