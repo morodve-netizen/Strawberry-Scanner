@@ -211,7 +211,7 @@ Tabs.Players:CreateButton{
 			equipped = false
 		end)
 
-		tool.Button1Down:Connect(function()
+		tool.Activated:Connect(function()
 			if not equipped then return end
 			if mouse.Target then
 				Delete(mouse.Target)
@@ -237,7 +237,7 @@ Tabs.Players:CreateButton{
 			equipped = false
 		end)
 
-		tool.Button1Down:Connect(function()
+		tool.Activated:Connect(function()
 			if not equipped then return end
 			if mouse.Target then
 				for _, v in ipairs(mouse.Target:GetDescendants()) do
@@ -250,16 +250,15 @@ Tabs.Players:CreateButton{
 	end
 }
 
-	local slocked: Boolean = false
-	local curplayers = {}
-
-local slock_toggle = Tabs.Players:CreateToggle("Server Lock", {Title = "Toggle", Default = false })
+local curplayers = {}
+local slocked = false
+local slock_toggle = Tabs.Players:CreateToggle("ServerLock", {Title = "Server Lock", Default = false })
 
 slock_toggle:OnChanged(function()
-	local decision: Boolean = Tabs["Server Lock"].Value
-
-	if decision then --# Serverlock: ON
-		for _, p in pairs(Players:GetChildren()) do
+	--local decision: Boolean = Tabs.ServerLock.Value
+	slocked = not slocked
+	if slocked then
+		for _, p in pairs(game:GetService("Players"):GetChildren()) do
 			table.insert(curplayers, p.Name)
 		end
 		game:GetService("Players").PlayerAdded:Connect(function(plr)
@@ -283,11 +282,9 @@ slock_toggle:OnChanged(function()
 			end
 		end)
 	else
-
+		curplayers = {}
 	end
 end)
-
-Options.MyToggle:SetValue(false)
 
 local Paragraph = Tabs.Settings:CreateParagraph("Paragraph", {
 	Title = "Adding settings menu soon...",
