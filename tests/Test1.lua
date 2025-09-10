@@ -142,6 +142,29 @@ Tabs.Players:CreateButton{
 	end
 }
 
+local bannedplayers = {}
+
+Tabs.Players:CreateButton{
+	Title = "Server Ban",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+		
+		for _, c in ipairs(Characters) do
+			local plr = Players:GetPlayerFromCharacter(c)
+			if not table.find(bannedplayers, plr) then
+				table.insert(bannedplayers, plr)
+				Delete(plr)
+			end
+		end
+	end
+}
+
+Players.PlayerAdded:Connect(function(plr)
+	if table.find(bannedplayers, plr) then
+		Delete(plr)
+	end
+end)
+
 local scaleValues = {
 	"BodyProportionScale",
 	"BodyWidthScale",
@@ -250,12 +273,13 @@ Tabs.Players:CreateButton{
 	end
 }
 
+--# If it ain't broken, don't fix it!
+
 local curplayers = {}
 local slocked = false
 local slock_toggle = Tabs.Players:CreateToggle("ServerLock", {Title = "Server Lock", Default = false })
 
 slock_toggle:OnChanged(function()
-	--local decision: Boolean = Tabs.ServerLock.Value
 	slocked = not slocked
 	if slocked then
 		for _, p in pairs(game:GetService("Players"):GetChildren()) do
@@ -285,6 +309,144 @@ slock_toggle:OnChanged(function()
 		curplayers = {}
 	end
 end)
+
+--local Characters = ParseTarget(TargetString)
+
+Tabs.Players:CreateButton{
+	Title = "Nuke Game",
+	Callback = function()
+		for _, i in ipairs(workspace:GetDescendants()) do
+			if i:IsA("Camera") or i:IsA("Terrain") then
+				continue
+			end
+			Delete(i)
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Ragdoll Player",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+		
+		for _, c in ipairs(Characters) do
+			Delete(c:FindFirstChild("HumanoidRootPart"))
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Brickify",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, c in ipairs(Characters) do
+			Delete(c:FindFirstChild("Humanoid"))
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Blockhead",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, c in ipairs(Characters) do
+			Delete(c.Head:FindFirstChildWhichIsA("SpecialMesh"))
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Korbloxify",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, c in ipairs(Characters) do
+			if c:FindFirstChild("Torso") then
+				local limbs = {"Right Leg"}
+				for _, limb in ipairs(limbs) do
+					local part = c:FindFirstChild(limb)
+					if part then Delete(part) end
+				end
+			elseif c:FindFirstChild("UpperTorso") then
+				local limbs = {
+					"RightUpperLeg", "RightLowerLeg", "RightLeg"
+				}
+				for _, limb in ipairs(limbs) do
+					local part = c:FindFirstChild(limb)
+					if part then Delete(part) end
+				end
+			end
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Delete Player's Tools",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, c in ipairs(Characters) do
+			local user: Player = Players:FindFirstChild(c.Name)
+			for  _, t: Tool in ipairs(user.Backpack) do
+				if t:IsA("Tool") then
+					Delete(t)
+				end
+			end
+			for  _, t: Tool in ipairs(c) do
+				if t:IsA("Tool") then
+					Delete(t)
+				end
+			end
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Remove Player's Limbs",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, c in ipairs(Characters) do
+			local player = Players:FindFirstChild(c.Name)
+			if player and player.Character then
+				local character = player.Character
+				if character:FindFirstChild("Torso") then
+					local limbs = {"Left Arm", "Left Leg", "Right Arm", "Right Leg"}
+					for _, limb in ipairs(limbs) do
+						local part = character:FindFirstChild(limb)
+						if part then Delete(part) end
+					end
+				elseif character:FindFirstChild("UpperTorso") then
+					local limbs = {
+						"LeftUpperArm", "LeftLowerArm", "LeftArm",
+						"LeftUpperLeg", "LeftLowerLeg", "LeftLeg",
+						"RightUpperArm", "RightLowerArm", "RightArm",
+						"RightUpperLeg", "RightLowerLeg", "RightLeg"
+					}
+					for _, limb in ipairs(limbs) do
+						local part = character:FindFirstChild(limb)
+						if part then Delete(part) end
+					end
+				end
+			end
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Punish",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, v in ipairs(Characters) do
+			if v:FindFirstChild("Head") then
+				Delete(v)
+			end
+		end
+	end
+}
 
 local Paragraph = Tabs.Settings:CreateParagraph("Paragraph", {
 	Title = "Adding settings menu soon...",
