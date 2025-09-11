@@ -279,6 +279,8 @@ local curplayers = {}
 local slocked = false
 local slock_toggle = Tabs.Players:CreateToggle("ServerLock", {Title = "Server Lock", Default = false })
 
+slock_toggle:SetValue(false)
+
 slock_toggle:OnChanged(function()
 	slocked = not slocked
 	if slocked then
