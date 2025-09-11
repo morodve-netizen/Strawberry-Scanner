@@ -18,14 +18,14 @@ local Player = Players.LocalPlayer
 local Library = loadstring(game:HttpGet("https://github.com/ActualMasterOogway/Fluent-Renewed/releases/latest/download/Fluent.luau"))()
 
 local Window = Library:CreateWindow{
-	Title = "Strawberry Commands FE | v1.2.7",
+	Title = "Strawberry Commands FE | Nightly",
 	SubTitle = " ",
 	TabWidth = 160,
 	Size = UDim2.fromOffset(830, 525),
 	Resize = true,
 	MinSize = Vector2.new(470, 380),
 	Acrylic = true,
-	Theme = "Rose",
+	Theme = "Amethyst",
 	MinimizeKey = Enum.KeyCode.RightControl
 }
 
