@@ -1,7 +1,7 @@
 -- Instances: 22 | Scripts: 3 | Modules: 0 | Tags: 0
 local G2L = {};
 
--- Workspace.StrawMain
+-- StarterGui.StrawMain
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["IgnoreGuiInset"] = true;
 G2L["1"]["DisplayOrder"] = 2147483647;
@@ -10,7 +10,7 @@ G2L["1"]["Name"] = [[StrawMain]];
 G2L["1"]["ResetOnSpawn"] = false;
 
 
--- Workspace.StrawMain.Scanner
+-- StarterGui.StrawMain.Scanner
 G2L["2"] = Instance.new("Frame", G2L["1"]);
 G2L["2"]["BorderSizePixel"] = 0;
 G2L["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
@@ -22,14 +22,14 @@ G2L["2"]["Name"] = [[Scanner]];
 G2L["2"]["BackgroundTransparency"] = 1;
 
 
--- Workspace.StrawMain.Scanner.Glass
+-- StarterGui.StrawMain.Scanner.Glass
 G2L["3"] = Instance.new("ImageLabel", G2L["2"]);
 G2L["3"]["ZIndex"] = -2147483647;
 G2L["3"]["BorderSizePixel"] = 0;
 G2L["3"]["BackgroundColor3"] = Color3.fromRGB(67, 67, 67);
 G2L["3"]["ImageTransparency"] = 0.11;
 -- [ERROR] cannot convert ImageContent, please report to "https://github.com/uniquadev/GuiToLuaConverter/issues"
-G2L["3"]["ImageColor3"] = Color3.fromRGB(171, 35, 62);
+G2L["3"]["ImageColor3"] = Color3.fromRGB(128, 36, 154);
 G2L["3"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
 G2L["3"]["Image"] = [[rbxassetid://413422291]];
 G2L["3"]["Size"] = UDim2.new(1, 0, 1, 0);
@@ -38,17 +38,17 @@ G2L["3"]["Name"] = [[Glass]];
 G2L["3"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
--- Workspace.StrawMain.Scanner.Glass.UIGradient
+-- StarterGui.StrawMain.Scanner.Glass.UIGradient
 G2L["4"] = Instance.new("UIGradient", G2L["3"]);
 
 
 
--- Workspace.StrawMain.Scanner.Glass.UICorner
+-- StarterGui.StrawMain.Scanner.Glass.UICorner
 G2L["5"] = Instance.new("UICorner", G2L["3"]);
 G2L["5"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.Shadow
+-- StarterGui.StrawMain.Scanner.Shadow
 G2L["6"] = Instance.new("ImageLabel", G2L["2"]);
 G2L["6"]["ZIndex"] = -30;
 G2L["6"]["BorderSizePixel"] = 0;
@@ -66,12 +66,12 @@ G2L["6"]["Name"] = [[Shadow]];
 G2L["6"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
--- Workspace.StrawMain.Scanner.Shadow.UIGradient
+-- StarterGui.StrawMain.Scanner.Shadow.UIGradient
 G2L["7"] = Instance.new("UIGradient", G2L["6"]);
-G2L["7"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 52, 88)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 52, 88))};
+G2L["7"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(221, 21, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(221, 21, 255))};
 
 
--- Workspace.StrawMain.Scanner.Gradient
+-- StarterGui.StrawMain.Scanner.Gradient
 G2L["8"] = Instance.new("Frame", G2L["2"]);
 G2L["8"]["ZIndex"] = -1000;
 G2L["8"]["BorderSizePixel"] = 0;
@@ -82,26 +82,26 @@ G2L["8"]["Name"] = [[Gradient]];
 G2L["8"]["BackgroundTransparency"] = 0.9;
 
 
--- Workspace.StrawMain.Scanner.Gradient.UIGradient
+-- StarterGui.StrawMain.Scanner.Gradient.UIGradient
 G2L["9"] = Instance.new("UIGradient", G2L["8"]);
 G2L["9"]["Rotation"] = -90;
 G2L["9"]["Transparency"] = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(0.469, 1),NumberSequenceKeypoint.new(1.000, 1)};
 
 
--- Workspace.StrawMain.Scanner.Gradient.UICorner
+-- StarterGui.StrawMain.Scanner.Gradient.UICorner
 G2L["a"] = Instance.new("UICorner", G2L["8"]);
 G2L["a"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.UICorner
+-- StarterGui.StrawMain.Scanner.UICorner
 G2L["b"] = Instance.new("UICorner", G2L["2"]);
 G2L["b"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.Top
+-- StarterGui.StrawMain.Scanner.Top
 G2L["c"] = Instance.new("TextLabel", G2L["2"]);
 G2L["c"]["BorderSizePixel"] = 0;
-G2L["c"]["TextSize"] = 14;
+G2L["c"]["TextSize"] = 13;
 G2L["c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 G2L["c"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
 G2L["c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
@@ -109,16 +109,16 @@ G2L["c"]["BackgroundTransparency"] = 1;
 G2L["c"]["RichText"] = true;
 G2L["c"]["Size"] = UDim2.new(1, 0, 0, 35);
 G2L["c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-G2L["c"]["Text"] = [[<b>Strawberry 🍓</b>: Scanner]];
+G2L["c"]["Text"] = [[<b>Strawberry 🍇</b>: Scanner | Nightly]];
 G2L["c"]["Name"] = [[Top]];
 
 
--- Workspace.StrawMain.Scanner.UIDrag
+-- StarterGui.StrawMain.Scanner.UIDrag
 G2L["d"] = Instance.new("LocalScript", G2L["2"]);
 G2L["d"]["Name"] = [[UIDrag]];
 
 
--- Workspace.StrawMain.Scanner.ScanBtn
+-- StarterGui.StrawMain.Scanner.ScanBtn
 G2L["e"] = Instance.new("TextButton", G2L["2"]);
 G2L["e"]["BorderSizePixel"] = 0;
 G2L["e"]["TextSize"] = 14;
@@ -134,19 +134,19 @@ G2L["e"]["Name"] = [[ScanBtn]];
 G2L["e"]["Position"] = UDim2.new(0.5, 0, 1, -35);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.UICorner
+-- StarterGui.StrawMain.Scanner.ScanBtn.UICorner
 G2L["f"] = Instance.new("UICorner", G2L["e"]);
 G2L["f"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Glass
+-- StarterGui.StrawMain.Scanner.ScanBtn.Glass
 G2L["10"] = Instance.new("ImageLabel", G2L["e"]);
 G2L["10"]["ZIndex"] = -2147483647;
 G2L["10"]["BorderSizePixel"] = 0;
 G2L["10"]["BackgroundColor3"] = Color3.fromRGB(26, 26, 26);
 G2L["10"]["ImageTransparency"] = 0.11;
 -- [ERROR] cannot convert ImageContent, please report to "https://github.com/uniquadev/GuiToLuaConverter/issues"
-G2L["10"]["ImageColor3"] = Color3.fromRGB(171, 35, 62);
+G2L["10"]["ImageColor3"] = Color3.fromRGB(128, 36, 154);
 G2L["10"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
 G2L["10"]["Image"] = [[rbxassetid://413422291]];
 G2L["10"]["Size"] = UDim2.new(1, 0, 1, 0);
@@ -155,17 +155,17 @@ G2L["10"]["Name"] = [[Glass]];
 G2L["10"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Glass.UIGradient
+-- StarterGui.StrawMain.Scanner.ScanBtn.Glass.UIGradient
 G2L["11"] = Instance.new("UIGradient", G2L["10"]);
 
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Glass.UICorner
+-- StarterGui.StrawMain.Scanner.ScanBtn.Glass.UICorner
 G2L["12"] = Instance.new("UICorner", G2L["10"]);
 G2L["12"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Shadow
+-- StarterGui.StrawMain.Scanner.ScanBtn.Shadow
 G2L["13"] = Instance.new("ImageLabel", G2L["e"]);
 G2L["13"]["ZIndex"] = -30;
 G2L["13"]["BorderSizePixel"] = 0;
@@ -183,22 +183,22 @@ G2L["13"]["Name"] = [[Shadow]];
 G2L["13"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Shadow.UIGradient
+-- StarterGui.StrawMain.Scanner.ScanBtn.Shadow.UIGradient
 G2L["14"] = Instance.new("UIGradient", G2L["13"]);
-G2L["14"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 52, 88)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 52, 88))};
+G2L["14"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(221, 21, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(221, 21, 255))};
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Function
+-- StarterGui.StrawMain.Scanner.ScanBtn.Function
 G2L["15"] = Instance.new("LocalScript", G2L["e"]);
 G2L["15"]["Name"] = [[Function]];
 
 
--- Workspace.StrawMain.Scanner.StrawScan
+-- StarterGui.StrawMain.Scanner.StrawScan
 G2L["16"] = Instance.new("LocalScript", G2L["2"]);
 G2L["16"]["Name"] = [[StrawScan]];
 
 
--- Workspace.StrawMain.Scanner.UIDrag
+-- StarterGui.StrawMain.Scanner.UIDrag
 local function C_d()
 local script = G2L["d"];
 	local UIS = game:GetService('UserInputService')
@@ -238,7 +238,7 @@ local script = G2L["d"];
 	
 end;
 task.spawn(C_d);
--- Workspace.StrawMain.Scanner.ScanBtn.Function
+-- StarterGui.StrawMain.Scanner.ScanBtn.Function
 local function C_15()
 local script = G2L["15"];
 	local TweenService = game:GetService("TweenService")
@@ -271,7 +271,7 @@ local script = G2L["15"];
 	
 end;
 task.spawn(C_15);
--- Workspace.StrawMain.Scanner.StrawScan
+-- StarterGui.StrawMain.Scanner.StrawScan
 local function C_16()
 local script = G2L["16"];
 	--[[
