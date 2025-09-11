@@ -273,7 +273,7 @@ Tabs.Players:CreateButton{
 	end
 }
 
---# If it ain't broken, don't fix it!
+-- If it ain't broken, don't fix it!
 
 local curplayers = {}
 local slocked = false
@@ -309,8 +309,6 @@ slock_toggle:OnChanged(function()
 		curplayers = {}
 	end
 end)
-
---local Characters = ParseTarget(TargetString)
 
 Tabs.Players:CreateButton{
 	Title = "Nuke Game",
