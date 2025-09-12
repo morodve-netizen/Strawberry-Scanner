@@ -371,11 +371,11 @@ end)
 
 local partsize = 10
 local killauraactive = true
-local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "Killaura", Default = false })
+local killaura_toggle = Tabs.Other:CreateToggle("KillAura", {Title = "Killaura", Default = false })
 
 local Slider = Tabs.Other:CreateSlider("Slider", {
-	Title = "Killaura Size",
-	Description = "Changes the size of the killaura (MUST RETOGGLE KILLAURA TO WORK)",
+	Title = "KillAura Size",
+	Description = "Changes the size of the KillAura (MUST RETOGGLE KILLAURA TO WORK)",
 	Default = 5,
 	Min = 1,
 	Max = 100,
