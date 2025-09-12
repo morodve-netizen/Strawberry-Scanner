@@ -38,6 +38,10 @@ local Tabs = {
 		Title = "World",
 		Icon = "globe"
 	},
+	Reanims = Window:CreateTab{
+		Title = "Renimations",
+		Icon = "brackets-curly"
+	},
 	Other = Window:CreateTab{
 		Title = "Other",
 		Icon = "wrench"
@@ -47,6 +51,15 @@ local Tabs = {
 		Icon = "settings"
 	}
 }
+
+local Paragraph = Tabs.Reanims:CreateParagraph("Paragraph", {
+	Title = "READ ME (1/2)",
+	Content = "ALL THE VISUALS IN THIS SCRIPT ARE CLIENT-SIDED, THE KILLING ISN'T THOUGH"
+})
+local Paragraph = Tabs.Reanims:CreateParagraph("Paragraph", {
+	Title = "READ ME (2/2)",
+	Content = "YOU NEED TO BE R6 FOR ALL OF THESE SCRIPTS OR ELSE THEY WON'T WORK"
+})
 
 local Options = Library.Options
 
@@ -424,6 +437,20 @@ Tabs.Players:CreateButton{
 				Delete(v)
 			end
 		end
+	end
+}
+
+Tabs.Reanims:CreateButton{
+	Title = "John doe",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/reanims/johndoe.lua"))()
+	end
+}
+
+Tabs.Reanims:CreateButton{
+	Title = "Thomas the dank engine",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/reanims/thomasthedankengine.lua"))()
 	end
 }
 
