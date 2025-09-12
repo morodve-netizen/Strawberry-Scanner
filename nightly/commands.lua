@@ -370,7 +370,7 @@ slock_toggle:OnChanged(function()
 end)
 
 local partsize = 10
-local killauraactive = true
+local killauraactive = false
 local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "KillAura", Default = false })
 
 local Slider = Tabs.Other:CreateSlider("Slider", {
