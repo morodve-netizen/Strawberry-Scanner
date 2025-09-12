@@ -566,7 +566,7 @@ Tabs.Reanims:CreateButton{
 Tabs.Reanims:CreateButton{
 	Title = "Thomas the dank engine",
 	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/reanims/thomasthedankengine.lua"))()
+		--loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/reanims/thomasthedankengine.lua"))()
 	end
 }
 
