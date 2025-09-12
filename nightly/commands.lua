@@ -32,19 +32,19 @@ local Window = Library:CreateWindow{
 local Tabs = {
 	Players = Window:CreateTab{
 		Title = "Players",
-		Icon = "phosphor-users-bold"
+		Icon = "users"
 	},
 	World = Window:CreateTab{
 		Title = "World",
-		Icon = "globe-bold"
+		Icon = "globe"
 	},
 	Other = Window:CreateTab{
 		Title = "Other",
-		Icon = "bookmarks-bold"
+		Icon = "bookmarks"
 	},
 	Settings = Window:CreateTab{
 		Title = "Settings",
-		Icon = "settings-bold"
+		Icon = "settings"
 	}
 }
 
