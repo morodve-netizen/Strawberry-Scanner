@@ -31,4 +31,5 @@ damage(hit)
 end
 ```
 5. Run the code (IF THE GAME IS BACKDOORED) and then you're done!
+
 (OPTIONAL) 6. Ping C:\Drive or Saji in the StrawberryCMD discord server to add your script, make sure it works though. ALSO IT HAS TO NOT BE OBFUSCATED!!!
