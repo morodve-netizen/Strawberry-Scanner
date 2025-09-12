@@ -268,11 +268,75 @@ Tabs.Other:CreateButton{
 	end
 }
 
+Tabs.Other:CreateButton{
+	Title = "Kill Player",
+	Callback = function()
+		local mouse = Player:GetMouse()
+		local equipped = false
+
+		local tool = Instance.new("Tool",Player:FindFirstChild("Backpack"))
+		tool.Name = "Delete Tool"
+		tool.RequiresHandle = false
+
+		tool.Equipped:Connect(function()
+			equipped = true
+		end)
+		tool.Equipped:Connect(function()
+			equipped = false
+		end)
+
+		tool.Activated:Connect(function()
+			if not equipped then return end
+			if mouse.Target then
+				local plr: Player = game:GetService("Players"):GetPlayerFromCharacter(mouse.Target)
+				if plr then
+					Delete(plr.Character:WaitForChild("Head",5))
+				end
+			end
+		end)
+	end
+}
+
+Tabs.Other:CreateButton{
+	Title = "Copy Player's Name",
+	Callback = function()
+		local mouse = Player:GetMouse()
+
+		local tool = Instance.new("Tool")
+		tool.Name = "Copy User Tool"
+		tool.RequiresHandle = false
+		tool.Parent = Player:WaitForChild("Backpack")
+
+		local equipped = false
+
+		tool.Equipped:Connect(function()
+			equipped = true
+		end)
+
+		tool.Unequipped:Connect(function()
+			equipped = false
+		end)
+
+		mouse.Button1Down:Connect(function()
+			if not equipped then return end
+
+			local target = mouse.Target
+			if target then
+				if target.Parent:FindFirstChild("Humanoid") then
+					local plr = game.Players:GetPlayerFromCharacter(target.Parent)
+					setclipboard(plr.Name) --Don't mind the syntax error
+					toclipboard(plr.Name) --Don't mind the syntax error
+				end
+			end
+		end)
+	end
+}
+
 -- If it ain't broken, don't fix it!
 
 local curplayers = {}
 local slocked = true --its oposite cuz of
-local slock_toggle = Tabs.Other:CreateToggle("ServerLock", {Title = "Server Lock", Default = false })
+local slock_toggle = Tabs.World:CreateToggle("ServerLock", {Title = "Server Lock", Default = false })
 
 slock_toggle:OnChanged(function()
 	slocked = not slocked --this
@@ -330,7 +394,7 @@ killaura_toggle:OnChanged(function()
 	local char = lp.Character
 
 	if killauraactive then
-		char:WaitForChild("Strawberry_Killaura123",5):Destroy()
+		workspace:WaitForChild("Strawberry_Killaura123",5):Destroy()
 	end
 
 	local part: Part = Instance.new("Part")
