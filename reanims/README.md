@@ -16,7 +16,7 @@ end
 hit.Humanoid.Health = 0
 ```
 ```lua
-damage(hit)
+local function damage(hit)
   hit.Humanoid.Health = 0
 end
 ```
@@ -26,7 +26,7 @@ It might be hard to find depending on how big the script is but if you have some
 Delete(hit.Head)
 ```
 ```lua
-damage(hit)
+local function damage(hit)
   Delete(hit.Head)
 end
 ```
