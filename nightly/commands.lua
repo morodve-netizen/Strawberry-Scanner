@@ -36,15 +36,15 @@ local Tabs = {
 	},
 	World = Window:CreateTab{
 		Title = "World",
-		Icon = "phosphor-users-bold"
+		Icon = "globe-bold"
 	},
 	Other = Window:CreateTab{
 		Title = "Other",
-		Icon = "phosphor-users-bold"
+		Icon = "bookmarks-bold"
 	},
 	Settings = Window:CreateTab{
 		Title = "Settings",
-		Icon = "settings"
+		Icon = "settings-bold"
 	}
 }
 
