@@ -371,6 +371,8 @@ end)
 
 local partsize = 10
 local killauraactive = false
+local killauraPart
+
 local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "KillAura", Default = false })
 
 local Slider = Tabs.Other:CreateSlider("Slider", {
@@ -387,18 +389,26 @@ local Slider = Tabs.Other:CreateSlider("Slider", {
 
 killaura_toggle:OnChanged(function()
 	killauraactive = not killauraactive
-	
+
 	local lp: Player = game:GetService("Players").LocalPlayer
 	if not lp then return end
-
 	local char = lp.Character
+	if not char or not char:FindFirstChild("HumanoidRootPart") then return end
 
-	if killauraactive then
-		workspace:WaitForChild("Strawberry_Killaura123",5):Destroy()
+	if not killauraactive then
+		if killauraPart and killauraPart.Parent then
+			killauraPart:Destroy()
+			killauraPart = nil
+		end
+		return
 	end
 
-	local part: Part = Instance.new("Part")
-	part.Size = Vector3.new(partsize,partsize,partsize)
+	if killauraPart and killauraPart.Parent then
+		killauraPart:Destroy()
+	end
+
+	local part = Instance.new("Part")
+	part.Size = Vector3.new(partsize, partsize, partsize)
 	part.Transparency = 0.5
 	part.BrickColor = BrickColor.new("Bright red")
 	part.Material = Enum.Material.Neon
@@ -406,19 +416,25 @@ killaura_toggle:OnChanged(function()
 	part.Anchored = false
 	part.CanCollide = false
 	part.Name = "Strawberry_Killaura123"
+	part.CFrame = char.HumanoidRootPart.CFrame
 	part.Parent = workspace
 
-	local weld: WeldConstraint = Instance.new("WeldConstraint")
-	weld.Part0 = char:FindFirstChild("HumanoidRootPart")
+	local weld = Instance.new("WeldConstraint")
+	weld.Part0 = char.HumanoidRootPart
 	weld.Part1 = part
 	weld.Parent = part
 
 	part.Touched:Connect(function(hit)
-		local plr: Player = game:GetService("Players"):GetPlayerFromCharacter(hit.Parent)
+		local plr = game:GetService("Players"):GetPlayerFromCharacter(hit.Parent)
 		if plr and plr ~= lp then
-			Delete(plr.Character:WaitForChild("Head",5))
+			local head = plr.Character and plr.Character:FindFirstChild("Head")
+			if head then
+				head:Destroy()
+			end
 		end
 	end)
+
+	killauraPart = part
 end)
 
 Tabs.World:CreateButton{
