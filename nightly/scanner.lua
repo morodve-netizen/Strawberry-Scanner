@@ -290,7 +290,7 @@ local script = G2L["16"];
 	local ScanButton = script.Parent.ScanBtn -- Binded button to start scan
 	local AlreadyScanned = false -- So they cant scan twice
 	
-	local MaxScanTime = 0.32 -- if a remote event does not respond by this much time, it is skipped
+	local MaxScanTime = 0.25 -- if a remote event does not respond by this much time, it is skipped
 	
 	local Players = game:GetService("Players")
 	local LocalPlayer = Players.LocalPlayer
