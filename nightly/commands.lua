@@ -40,7 +40,7 @@ local Tabs = {
 	},
 	Reanims = Window:CreateTab{
 		Title = "Renimations",
-		Icon = "brackets-curly"
+		Icon = "boxing-glove"
 	},
 	Other = Window:CreateTab{
 		Title = "Other",
@@ -195,7 +195,7 @@ Tabs.Players:CreateButton{
 	Title = "Server Ban",
 	Callback = function()
 		local Characters = ParseTarget(TargetString)
-		
+
 		for _, c in ipairs(Characters) do
 			local plr = Players:GetPlayerFromCharacter(c)
 			if not table.find(bannedplayers, plr) then
@@ -272,7 +272,7 @@ Tabs.Other:CreateButton{
 
 local curplayers = {}
 local slocked = true --its oposite cuz of
-local slock_toggle = Tabs.Players:CreateToggle("ServerLock", {Title = "Server Lock", Default = false })
+local slock_toggle = Tabs.Other:CreateToggle("ServerLock", {Title = "Server Lock", Default = false })
 
 slock_toggle:OnChanged(function()
 	slocked = not slocked --this
@@ -305,13 +305,65 @@ slock_toggle:OnChanged(function()
 	end
 end)
 
+local partsize = 10
+local killauraactive = true
+local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "Killaura", Default = false })
+
+local Slider = Tabs.Other:CreateSlider("Slider", {
+	Title = "Killaura Size",
+	Description = "Changes the size of the killaura (MUST RETOGGLE KILLAURA TO WORK)",
+	Default = 5,
+	Min = 1,
+	Max = 100,
+	Rounding = 1,
+	Callback = function(Value)
+		partsize = Value
+	end
+})
+
+killaura_toggle:OnChanged(function()
+	killauraactive = not killauraactive
+	
+	local lp: Player = game:GetService("Players").LocalPlayer
+	if not lp then return end
+
+	local char = lp.Character
+
+	if killauraactive then
+		char:WaitForChild("Strawberry_Killaura123",5):Destroy()
+	end
+
+	local part: Part = Instance.new("Part")
+	part.Size = Vector3.new(partsize,partsize,partsize)
+	part.Transparency = 0.5
+	part.BrickColor = BrickColor.new("Bright red")
+	part.Material = Enum.Material.Neon
+	part.Shape = Enum.PartType.Ball
+	part.Anchored = false
+	part.CanCollide = false
+	part.Name = "Strawberry_Killaura123"
+	part.Parent = workspace
+
+	local weld: WeldConstraint = Instance.new("WeldConstraint")
+	weld.Part0 = char:FindFirstChild("HumanoidRootPart")
+	weld.Part1 = part
+	weld.Parent = part
+
+	part.Touched:Connect(function(hit)
+		local plr: Player = game:GetService("Players"):GetPlayerFromCharacter(hit.Parent)
+		if plr and plr ~= lp then
+			Delete(plr.Character:WaitForChild("Head",5))
+		end
+	end)
+end)
+
 Tabs.World:CreateButton{
 	Title = "Nuke Game",
 	Callback = function()
 		for _, instance in ipairs(workspace:GetDescendants()) do
- 		   pcall(function()
-		        Delete(instance)
-		    end)
+			pcall(function()
+				Delete(instance)
+			end)
 		end
 	end
 }
@@ -320,7 +372,7 @@ Tabs.Players:CreateButton{
 	Title = "Ragdoll Player",
 	Callback = function()
 		local Characters = ParseTarget(TargetString)
-		
+
 		for _, c in ipairs(Characters) do
 			Delete(c:FindFirstChild("HumanoidRootPart"))
 		end
