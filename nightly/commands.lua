@@ -1,7 +1,7 @@
 -- the commands themselves, the scanner is more important tbh
 -- messy code, contributions welcome like always
 -- very little documentation/comments so please try to read the code good
--- last updated: 9/10/25
+-- last updated: 9/12/25
 
 local HookedRemote = game.Players.LocalPlayer.PlayerGui:WaitForChild("StrawberryHookedRM", 5)
 HookedRemote = HookedRemote.Value -- value of object value which is the vulnerable remote event itself
@@ -36,10 +36,6 @@ local Tabs = {
 	},
 	World = Window:CreateTab{
 		Title = "World",
-		Icon = "phosphor-users-bold"
-	},
-	Reanims = Window:CreateTab{
-		Title = "Reanimations (COMING SOON)",
 		Icon = "phosphor-users-bold"
 	},
 	Other = Window:CreateTab{
@@ -203,58 +199,6 @@ Players.PlayerAdded:Connect(function(plr)
 	end
 end)
 
-local scaleValues = {
-	"BodyProportionScale",
-	"BodyWidthScale",
-	"BodyHeightScale",
-	"BodyDepthScale",
-	"HeadScale",
-	"BodyTypeScale"
-}
-
-Tabs.Players:CreateButton{
-	Title = "Big Hats (R15 Only)",
-	Callback = function()
-		local Characters = ParseTarget(TargetString)
-
-		for _, v in ipairs(Characters) do
-			-- makes the players hats big by deleting some hat size values
-
-			local hum = v:FindFirstChildOfClass("Humanoid")
-			if hum.RigType == Enum.HumanoidRigType.R15 then
-				local hats = hum:GetAccessories()
-				local scalableHats = {}
-
-				for i, hat in pairs(hats) do
-					local handle = hat:FindFirstChild("Handle")
-					if not handle then continue end
-					local scaleType = handle:FindFirstChild("AvatarPartScaleType")
-					if not scaleType then continue end
-					table.insert(scalableHats, hat)
-				end
-
-				if #scalableHats == 0 then continue end
-
-				task.spawn(function()
-					for i, value in pairs(scaleValues) do
-						for i, hat in pairs(scalableHats) do
-							local handle = hat:FindFirstChild("Handle")
-							if not handle then continue end
-							local ogSize = handle:WaitForChild("OriginalSize")
-							Delete(ogSize)
-							repeat task.wait() until ogSize.Parent ~= handle
-						end
-						local scaleValue = hum:FindFirstChild(value)
-						if not scaleValue then continue end
-						Delete(scaleValue)
-						repeat task.wait() until scaleValue.Parent ~= hum
-					end
-				end)
-			end
-		end
-	end
-}
-
 Tabs.Other:CreateButton{
 	Title = "Delete Tool",
 	Callback = function()
@@ -311,7 +255,7 @@ Tabs.Other:CreateButton{
 	end
 }
 
---# If it ain't broken, don't fix it!
+-- If it ain't broken, don't fix it!
 
 local curplayers = {}
 local slocked = true --its oposite cuz of
@@ -347,8 +291,6 @@ slock_toggle:OnChanged(function()
 		curplayers = {}
 	end
 end)
-
---local Characters = ParseTarget(TargetString) <--- Remember this
 
 Tabs.World:CreateButton{
 	Title = "Nuke Game",
@@ -485,11 +427,6 @@ Tabs.Players:CreateButton{
 		end
 	end
 }
-
-local Paragraph = Tabs.Reanims:CreateParagraph("Paragraph", {
-	Title = "Adding reanimations soon",
-	Content = "Bascically just took old scripts and replaced the damage script with the Delete() function\ndw saji I'm doing them (C:\\Drive)"
-})
 
 local Paragraph = Tabs.Settings:CreateParagraph("Paragraph", {
 	Title = "Adding settings menu soon...",
