@@ -371,7 +371,7 @@ end)
 
 local partsize = 10
 local killauraactive = false
-local killauraPart
+local killaurapart
 
 local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "KillAura", Default = false })
 
@@ -396,15 +396,15 @@ killaura_toggle:OnChanged(function()
 	if not char or not char:FindFirstChild("HumanoidRootPart") then return end
 
 	if not killauraactive then
-		if killauraPart and killauraPart.Parent then
-			killauraPart:Destroy()
-			killauraPart = nil
+		if killaurapart and killaurapart.Parent then
+			killaurapart:Destroy()
+			killaurapart = nil
 		end
 		return
 	end
 
-	if killauraPart and killauraPart.Parent then
-		killauraPart:Destroy()
+	if killaurapart and killaurapart.Parent then
+		killaurapart:Destroy()
 	end
 
 	local part = Instance.new("Part")
@@ -434,7 +434,7 @@ killaura_toggle:OnChanged(function()
 		end
 	end)
 
-	killauraPart = part
+	killaurapart = part
 end)
 
 Tabs.World:CreateButton{
