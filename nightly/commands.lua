@@ -40,7 +40,7 @@ local Tabs = {
 	},
 	Other = Window:CreateTab{
 		Title = "Other",
-		Icon = "bookmarks"
+		Icon = "wrench"
 	},
 	Settings = Window:CreateTab{
 		Title = "Settings",
