@@ -40,7 +40,7 @@ local Tabs = {
 	},
 	Reanims = Window:CreateTab{
 		Title = "Renimations",
-		Icon = "globe"
+		Icon = "unplug"
 	},
 	Other = Window:CreateTab{
 		Title = "Other",
