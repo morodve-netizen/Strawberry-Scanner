@@ -18,20 +18,32 @@ local Player = Players.LocalPlayer
 local Library = loadstring(game:HttpGet("https://github.com/ActualMasterOogway/Fluent-Renewed/releases/latest/download/Fluent.luau"))()
 
 local Window = Library:CreateWindow{
-	Title = "Strawberry Commands FE | Nightly",
+	Title = "Strawberry Commands FE | v1.2.7",
 	SubTitle = " ",
 	TabWidth = 160,
 	Size = UDim2.fromOffset(830, 525),
 	Resize = true,
 	MinSize = Vector2.new(470, 380),
 	Acrylic = true,
-	Theme = "Amethyst",
+	Theme = "Rose",
 	MinimizeKey = Enum.KeyCode.RightControl
 }
 
 local Tabs = {
 	Players = Window:CreateTab{
 		Title = "Players",
+		Icon = "phosphor-users-bold"
+	},
+	World = Window:CreateTab{
+		Title = "World",
+		Icon = "phosphor-users-bold"
+	},
+	Reanims = Window:CreateTab{
+		Title = "Reanimations (COMING SOON)",
+		Icon = "phosphor-users-bold"
+	},
+	Other = Window:CreateTab{
+		Title = "Other",
 		Icon = "phosphor-users-bold"
 	},
 	Settings = Window:CreateTab{
@@ -142,6 +154,32 @@ Tabs.Players:CreateButton{
 	end
 }
 
+Tabs.Players:CreateButton{
+	Title = "Remove Meshes",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, v in ipairs(Characters) do
+			for _, m in ipairs(v:GetDescendants()) do
+				if m:IsA("SpecialMesh") or m:IsA("MeshPart") then
+					Delete(m)
+				end
+			end
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Cancel Animations",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, v in ipairs(Characters) do
+			Delete(v:FindFirstChild("Animate"))
+		end
+	end
+}
+
 local bannedplayers = {}
 
 Tabs.Players:CreateButton{
@@ -217,7 +255,7 @@ Tabs.Players:CreateButton{
 	end
 }
 
-Tabs.Players:CreateButton{
+Tabs.Other:CreateButton{
 	Title = "Delete Tool",
 	Callback = function()
 		local mouse = Player:GetMouse()
@@ -243,7 +281,7 @@ Tabs.Players:CreateButton{
 	end
 }
 
-Tabs.Players:CreateButton{
+Tabs.Other:CreateButton{
 	Title = "Delete Welds Tool",
 	Callback = function()
 		local mouse = Player:GetMouse()
@@ -273,16 +311,14 @@ Tabs.Players:CreateButton{
 	end
 }
 
--- If it ain't broken, don't fix it!
+--# If it ain't broken, don't fix it!
 
 local curplayers = {}
-local slocked = false
+local slocked = true --its oposite cuz of
 local slock_toggle = Tabs.Players:CreateToggle("ServerLock", {Title = "Server Lock", Default = false })
 
-slock_toggle:SetValue(false)
-
 slock_toggle:OnChanged(function()
-	slocked = not slocked
+	slocked = not slocked --this
 	if slocked then
 		for _, p in pairs(game:GetService("Players"):GetChildren()) do
 			table.insert(curplayers, p.Name)
@@ -312,7 +348,9 @@ slock_toggle:OnChanged(function()
 	end
 end)
 
-Tabs.Players:CreateButton{
+--local Characters = ParseTarget(TargetString) <--- Remember this
+
+Tabs.World:CreateButton{
 	Title = "Nuke Game",
 	Callback = function()
 		for _, i in ipairs(workspace:GetDescendants()) do
@@ -447,6 +485,11 @@ Tabs.Players:CreateButton{
 		end
 	end
 }
+
+local Paragraph = Tabs.Reanims:CreateParagraph("Paragraph", {
+	Title = "Adding reanimations soon",
+	Content = "Bascically just took old scripts and replaced the damage script with the Delete() function\ndw saji I'm doing them (C:\\Drive)"
+})
 
 local Paragraph = Tabs.Settings:CreateParagraph("Paragraph", {
 	Title = "Adding settings menu soon...",
