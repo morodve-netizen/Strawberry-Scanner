@@ -296,9 +296,11 @@ Tabs.World:CreateButton{
 	Title = "Nuke Game",
 	Callback = function()
 		for _, i in ipairs(workspace:GetDescendants()) do
-			if i:IsA("Camera") or i:IsA("Terrain") then
+			if not i.Parent then continue end
+			if i:IsA("Camera") or i.Name == "Terrain" then
 				continue
 			end
+			
 			Delete(i)
 		end
 	end
