@@ -275,7 +275,7 @@ Tabs.Other:CreateButton{
 		local equipped = false
 
 		local tool = Instance.new("Tool",Player:FindFirstChild("Backpack"))
-		tool.Name = "Delete Tool"
+		tool.Name = "Kill Tool"
 		tool.RequiresHandle = false
 
 		tool.Equipped:Connect(function()
@@ -288,9 +288,9 @@ Tabs.Other:CreateButton{
 		tool.Activated:Connect(function()
 			if not equipped then return end
 			if mouse.Target then
-				local plr: Player = game:GetService("Players"):GetPlayerFromCharacter(mouse.Target)
-				if plr then
-					Delete(plr.Character:WaitForChild("Head",5))
+				local ancestorparent = mouse.Target.Parent
+				if ancestorparent:FindFirstChild("Head") then
+					Delete(ancestorparent:FindFirstChild("Head"))
 				end
 			end
 		end)
@@ -370,7 +370,7 @@ slock_toggle:OnChanged(function()
 end)
 
 local partsize = 10
-local killauraactive = true
+local killauraactive = false
 local killaurapart
 
 local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "KillAura", Default = false })
@@ -429,7 +429,7 @@ killaura_toggle:OnChanged(function()
 		if plr and plr ~= lp then
 			local head = plr.Character and plr.Character:FindFirstChild("Head")
 			if head then
-				Delete(head)
+				head:Destroy()
 			end
 		end
 	end)
