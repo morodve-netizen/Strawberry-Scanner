@@ -370,7 +370,7 @@ slock_toggle:OnChanged(function()
 end)
 
 local partsize = 10
-local killauraactive = false
+local killauraactive = true
 local killaurapart
 
 local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "KillAura", Default = false })
@@ -429,7 +429,7 @@ killaura_toggle:OnChanged(function()
 		if plr and plr ~= lp then
 			local head = plr.Character and plr.Character:FindFirstChild("Head")
 			if head then
-				head:Destroy()
+				Delete(head)
 			end
 		end
 	end)
