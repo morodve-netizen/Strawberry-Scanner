@@ -572,21 +572,6 @@ Tabs.Players:CreateButton{
 	end
 }
 
-Tabs.Players:CreateButton{
-	Title = "Strip",
-	Callback = function()
-		local Characters = ParseTarget(TargetString)
-
-		for _, v in ipairs(Characters) do
-			for _, g in pairs(v) do
-				if g:IsA("Shirt") or g:IsA("Pants") or g:IsA("ShirtGraphic") then
-					Delete(g)
-				end
-			end
-		end
-	end
-}
-
 Tabs.Reanims:CreateButton{
 	Title = "John doe",
 	Callback = function()
