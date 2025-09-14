@@ -212,6 +212,23 @@ Players.PlayerAdded:Connect(function(plr)
 	end
 end)
 
+local selectionbox = Instance.new("SelectionBox",workspace)
+
+pcall(function()
+	local colors = {
+		Color3.fromRGB(255,0,0), Color3.fromRGB(255,127,0),
+		Color3.fromRGB(255,255,0), Color3.fromRGB(0,255,0),
+		Color3.fromRGB(0,0,255), Color3.fromRGB(75,0,130),
+		Color3.fromRGB(148,0,211)
+	}
+	while selectionbox do
+		for _,c in ipairs(colors) do
+			game:GetService("TweenService"):Create(selectionbox, TweenInfo.new(0.3, Enum.EasingStyle.Linear), {Color3=c}):Play()
+			task.wait(0.3)
+		end
+	end
+end)
+
 Tabs.Other:CreateButton{
 	Title = "Delete Tool",
 	Callback = function()
@@ -224,14 +241,21 @@ Tabs.Other:CreateButton{
 
 		tool.Equipped:Connect(function()
 			equipped = true
+			while equipped do
+				selectionbox.Adornee = mouse.Target
+				wait()
+			end
 		end)
 		tool.Equipped:Connect(function()
 			equipped = false
+			selectionbox.Adornee = nil
 		end)
 
 		tool.Activated:Connect(function()
 			if not equipped then return end
 			if mouse.Target then
+				local explosion = Instance.new("Explosion",workspace)
+				explosion.Position = mouse.Target.Position
 				Delete(mouse.Target)
 			end
 		end)
@@ -370,7 +394,7 @@ slock_toggle:OnChanged(function()
 end)
 
 local partsize = 10
-local killauraactive = false
+local killauraactive = true --SAJI, KEEP THIS AS TRUE PLEASE
 local killaurapart
 
 local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "KillAura", Default = false })
@@ -567,6 +591,21 @@ Tabs.Players:CreateButton{
 		for _, v in ipairs(Characters) do
 			if v:FindFirstChild("Head") then
 				Delete(v)
+			end
+		end
+	end
+}
+
+Tabs.Players:CreateButton{
+	Title = "Strip",
+	Callback = function()
+		local Characters = ParseTarget(TargetString)
+
+		for _, v in ipairs(Characters) do
+			for _, g in pairs(v) do
+				if g:IsA("Shirt") or g:IsA("Pants") or g:IsA("ShirtGraphic") then
+					Delete(g)
+				end
 			end
 		end
 	end
