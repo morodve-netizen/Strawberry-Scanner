@@ -212,8 +212,6 @@ Players.PlayerAdded:Connect(function(plr)
 	end
 end)
 
-local selectionbox = Instance.new("SelectionBox",workspace)
-
 Tabs.Other:CreateButton{
 	Title = "Delete Tool",
 	Callback = function()
@@ -226,21 +224,14 @@ Tabs.Other:CreateButton{
 
 		tool.Equipped:Connect(function()
 			equipped = true
-			while equipped do
-				selectionbox.Adornee = mouse.Target
-				wait()
-			end
 		end)
 		tool.Equipped:Connect(function()
 			equipped = false
-			selectionbox.Adornee = nil
 		end)
 
 		tool.Activated:Connect(function()
 			if not equipped then return end
 			if mouse.Target then
-				local explosion = Instance.new("Explosion",workspace)
-				explosion.Position = mouse.Target.Position
 				Delete(mouse.Target)
 			end
 		end)
@@ -379,7 +370,7 @@ slock_toggle:OnChanged(function()
 end)
 
 local partsize = 10
-local killauraactive = true --SAJI, KEEP THIS AS TRUE PLEASE
+local killauraactive = false
 local killaurapart
 
 local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "KillAura", Default = false })
