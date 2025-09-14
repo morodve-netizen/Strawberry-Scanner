@@ -214,21 +214,6 @@ end)
 
 local selectionbox = Instance.new("SelectionBox",workspace)
 
-pcall(function()
-	local colors = {
-		Color3.fromRGB(255,0,0), Color3.fromRGB(255,127,0),
-		Color3.fromRGB(255,255,0), Color3.fromRGB(0,255,0),
-		Color3.fromRGB(0,0,255), Color3.fromRGB(75,0,130),
-		Color3.fromRGB(148,0,211)
-	}
-	while selectionbox do
-		for _,c in ipairs(colors) do
-			game:GetService("TweenService"):Create(selectionbox, TweenInfo.new(0.3, Enum.EasingStyle.Linear), {Color3=c}):Play()
-			task.wait(0.3)
-		end
-	end
-end)
-
 Tabs.Other:CreateButton{
 	Title = "Delete Tool",
 	Callback = function()
