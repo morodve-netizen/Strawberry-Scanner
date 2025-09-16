@@ -370,7 +370,7 @@ slock_toggle:OnChanged(function()
 end)
 
 local partsize = 10
-local killauraactive = false
+local killauraactive = true --SAJI KEEP THIS AS TRUE, PLEASE, IT'S OPPOSITE
 local killaurapart
 
 local killaura_toggle = Tabs.Other:CreateToggle("Killaura", {Title = "KillAura", Default = false })
