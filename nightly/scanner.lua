@@ -1,7 +1,3 @@
--- DO NOT EDIT, THIS IS NOT MENT TO BE EDITED. THIS IS A COMPILED VERSION OF SCANNER.RBXMX
--- IF YOU WANT TO MAKE CHANGES, EDIT SCANNER.RBXMX AND CONVERT IT BACK TO A SCANNER.LUA SCRIPT VIA GUI 2 LUA BY UNIQADEV
--- AND ADD THIS WARNING MESSAGE
-
 -- Instances: 22 | Scripts: 3 | Modules: 0 | Tags: 0
 local G2L = {};
 
@@ -72,7 +68,7 @@ G2L["6"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 -- StarterGui.StrawMain.Scanner.Shadow.UIGradient
 G2L["7"] = Instance.new("UIGradient", G2L["6"]);
-G2L["7"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(221, 21, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(221, 21, 255))};
+G2L["7"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(220, 21, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(220, 21, 255))};
 
 
 -- StarterGui.StrawMain.Scanner.Gradient
@@ -189,7 +185,7 @@ G2L["13"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 -- StarterGui.StrawMain.Scanner.ScanBtn.Shadow.UIGradient
 G2L["14"] = Instance.new("UIGradient", G2L["13"]);
-G2L["14"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(221, 21, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(221, 21, 255))};
+G2L["14"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(220, 21, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(220, 21, 255))};
 
 
 -- StarterGui.StrawMain.Scanner.ScanBtn.Function
@@ -281,7 +277,7 @@ local script = G2L["16"];
 	--[[
 	
 	/// StrawScan ///
-	/// Last updated: 9/8/2025 ///
+	/// Last updated: 9/15/2025 ///
 	
 	Strawberry's advanced remote event scanner component made by saji
 	Everything below will be explained with comments
@@ -377,8 +373,9 @@ local script = G2L["16"];
 		for i, v in pairs(Remotes) do
 			ScanButton.Text = "Scanning... (" .. tostring(i) .. "/" .. tostring(#Remotes) .. ")"
 			
-			if isVulnerable(v) then
-				coroutine.wrap(function()
+			local vulnerable = isVulnerable(v)
+			if vulnerable then
+				task.delay(0, function()
 					ScanButton.TextSize = 12 -- sizing it down for the following message
 					ScanButton.Text = "Vuln found, booting up" -- telling the pookie user that a vuln remote is found :happyface:
 	
@@ -392,7 +389,7 @@ local script = G2L["16"];
 					loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/nightly/commands.lua"))() -- loads up the commands script
 					task.wait(1) -- waits before removing the scanner UI
 					script.Parent.Parent:Destroy() -- removes the scanner UI
-				end)()
+				end)
 				
 				break
 			end

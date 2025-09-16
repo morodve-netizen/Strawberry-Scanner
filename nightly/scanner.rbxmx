@@ -998,7 +998,7 @@ end)
 					<ProtectedString name="Source"><![CDATA[--[[
 
 /// StrawScan ///
-/// Last updated: 9/8/2025 ///
+/// Last updated: 9/15/2025 ///
 
 Strawberry's advanced remote event scanner component made by saji
 Everything below will be explained with comments
@@ -1094,8 +1094,9 @@ ScanButton.MouseButton1Click:Connect(function()
 	for i, v in pairs(Remotes) do
 		ScanButton.Text = "Scanning... (" .. tostring(i) .. "/" .. tostring(#Remotes) .. ")"
 		
-		if isVulnerable(v) then
-			coroutine.wrap(function()
+		local vulnerable = isVulnerable(v)
+		if vulnerable then
+			task.delay(0, function()
 				ScanButton.TextSize = 12 -- sizing it down for the following message
 				ScanButton.Text = "Vuln found, booting up" -- telling the pookie user that a vuln remote is found :happyface:
 
@@ -1109,7 +1110,7 @@ ScanButton.MouseButton1Click:Connect(function()
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/nightly/commands.lua"))() -- loads up the commands script
 				task.wait(1) -- waits before removing the scanner UI
 				script.Parent.Parent:Destroy() -- removes the scanner UI
-			end)()
+			end)
 			
 			break
 		end
