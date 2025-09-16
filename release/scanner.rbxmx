@@ -545,7 +545,7 @@
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">UIDrag</string>
 					<token name="RunContext">0</token>
-					<string name="ScriptGuid">{5032DED7-9C35-4578-8BC6-8CE802A8DE25}</string>
+					<string name="ScriptGuid">{0A4C1E78-3DAB-44A9-8F26-43F82D5248F3}</string>
 					<ProtectedString name="Source"><![CDATA[local UIS = game:GetService('UserInputService')
 local frame = script.Parent
 local dragToggle = nil
@@ -951,7 +951,7 @@ end)
 						<Content name="LinkedSource"><null></null></Content>
 						<string name="Name">Function</string>
 						<token name="RunContext">0</token>
-						<string name="ScriptGuid">{1C7D6BBF-7A39-440D-B16F-CBB876B25374}</string>
+						<string name="ScriptGuid">{845BB01C-377A-43A5-87A2-7DF4C030BDBB}</string>
 						<ProtectedString name="Source"><![CDATA[local TweenService = game:GetService("TweenService")
 local Button = script.Parent
 
@@ -994,11 +994,11 @@ end)
 					<Content name="LinkedSource"><null></null></Content>
 					<string name="Name">StrawScan</string>
 					<token name="RunContext">0</token>
-					<string name="ScriptGuid">{878020C2-2842-4F59-9654-3A4F9DDED7B5}</string>
+					<string name="ScriptGuid">{5CB9746C-7C27-449C-9E2B-502915885829}</string>
 					<ProtectedString name="Source"><![CDATA[--[[
 
 /// StrawScan ///
-/// Last updated: 9/8/2025 ///
+/// Last updated: 9/15/2025 ///
 
 Strawberry's advanced remote event scanner component made by saji
 Everything below will be explained with comments
@@ -1026,23 +1026,23 @@ end -- Good way to check if a object got destroyed in runtime
 
 local function isVulnerable(rmevent)
 	-- Stage 1: TestPart Allocation (for feeding it to remote events)
-	
+
 	-- Attempts to get startergear which is a useless object we can use for testing
 	local TestPart = LocalPlayer:FindFirstChild("StarterGear")
 	if not TestPart then
 		warn("StrawScan // StarterGear not found, replacing with char head")
 		TestPart = Character:FindFirstChild("Head")
 	end -- If startergear is not found, it will try to test with the chars head
-	
+
 	if not TestPart then
 		error("StrawScan // TestPart could not be found!")
 		return false
 	end -- If failed to find a testpart it will just quit and return as non vuln
-	
+
 	-- Stage 2: Firing the remote and seeing if its vulnerable
-	
+
 	rmevent:FireServer(TestPart)
-	
+
 	local t = tick()
 	while tick() - t < MaxScanTime do
 		if isDestroyed(TestPart) then
@@ -1050,10 +1050,10 @@ local function isVulnerable(rmevent)
 			CurrentVulnerableRemote = rmevent
 			return true
 		end
-		
+
 		task.wait()
 	end -- Actively checking if the remote event has responded
-	
+
 	-- If you got to this point, the remote wasent vulnerable so we are returning false
 	print("StrawScan // Remote not vulnerable: " .. rmevent:GetFullName())
 	return false
@@ -1064,38 +1064,39 @@ end -- Fully scans a remote event to check if it has a vuln
 ScanButton.MouseButton1Click:Connect(function()
 	if AlreadyScanned then return end
 	AlreadyScanned = true
-	
+
 	local Remotes = {}
 	local FoundRemote = false
-	
+
 	-- goes through every remote and if its valid its added to the scan queue
 	for _, v in pairs(game:GetDescendants()) do
 		if v:IsA("RemoteEvent") then
 			if v ~= nil and v.Parent ~= nil and v.Parent.Name == "RobloxReplicatedStorage" then continue end
 			if v ~= nil and v.Parent ~= nil and v.Parent.Name == "DefaultChatSystemChatEvents" then continue end
 			-- Blocks remote events that are apart of roblox to speed up scan and prevent kick
-			
+
 			FoundRemote = true
 			table.insert(Remotes, v)
 		end
 	end
-	
+
 	if not FoundRemote then
 		ScanButton.TextSize = 12 -- sizing it down for the following message
 		ScanButton.Text = "Sorry, no vuln remotes" -- telling the pookie user that no remote is vuln :sadface:
-		
+
 		return
 	end
-	
+
 	-- counting for user cus why not
 	ScanButton.Text = "Scanning... (0/" .. tostring(#Remotes) .. ")"
-	
+
 	-- scans and counts every remote inside the queue
 	for i, v in pairs(Remotes) do
 		ScanButton.Text = "Scanning... (" .. tostring(i) .. "/" .. tostring(#Remotes) .. ")"
-		
-		if isVulnerable(v) then
-			coroutine.wrap(function()
+
+		local vulnerable = isVulnerable(v)
+		if vulnerable then
+			task.delay(0, function()
 				ScanButton.TextSize = 12 -- sizing it down for the following message
 				ScanButton.Text = "Vuln found, booting up" -- telling the pookie user that a vuln remote is found :happyface:
 
@@ -1106,22 +1107,22 @@ ScanButton.MouseButton1Click:Connect(function()
 				VulnRemote.Name = "StrawberryHookedRM"
 				VulnRemote.Value = CurrentVulnerableRemote
 
-				loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/release/commands.lua"))() -- loads up the commands script
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/nightly/commands.lua"))() -- loads up the commands script
 				task.wait(1) -- waits before removing the scanner UI
 				script.Parent.Parent:Destroy() -- removes the scanner UI
-			end)()
-			
+			end)
+
 			break
 		end
 	end
-	
+
 	if CurrentVulnerableRemote ~= nil and CurrentVulnerableRemote:IsA("RemoteEvent") then
 		return
 	end
-	
+
 	ScanButton.TextSize = 12 -- sizing it down for the following message
 	ScanButton.Text = "Sorry, no vuln remotes" -- telling the pookie user that no remote is vuln :sadface:
-	
+
 	return
 end) -- // CRAP LOGIC THAT HANDLES THE SCANNNINGGGGG
 ]]></ProtectedString>
