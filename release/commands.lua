@@ -575,14 +575,14 @@ Tabs.Players:CreateButton{
 Tabs.Reanims:CreateButton{
 	Title = "John doe",
 	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/reanims/johndoe.lua"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/morodve-netizen/Strawberry-Scanner/refs/heads/main/reanims/johndoe.lua"))()
 	end
 }
 
 Tabs.Reanims:CreateButton{
 	Title = "Thomas the dank engine",
 	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/StrawberryRBLX/Strawberry-Scanner/refs/heads/main/reanims/thomasthedankengine.lua"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/morodve-netizen/Strawberry-Scanner/refs/heads/main/reanims/thomasthedankengine.lua"))()
 	end
 }
 
